@@ -16,6 +16,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
   <link rel="stylesheet" href="main.css" type="text/css">
+
+  <script src="scripts/DrawDualBarChart.js"></script>
+  <script src="scripts/DrawBidirectionalBarChart.js"></script>
+  <script src="scripts/DrawWinRateGraph.js"></script>
+  <script src="scripts/DrawBidirectionalWinRateGraph.js"></script>
+  <script src="scripts/DrawTankTypesPie.js"></script>
   <script src="scripts/main.js"></script>
 
   <div class="h1div">
@@ -35,9 +41,11 @@
     <div class="row" id="graphholderrow"> 
       <div class="col-md-8" id="leftcol">
         <div id="buttonholder">
-          <button class="graphchanger" id="btnstate1" onclick="ChangeGraph('1')">Graph 1</button>
-          <button class="graphchanger" id="btnstate2" onclick="ChangeGraph('2')">Graph 2</button>
-          <button class="graphchanger" id="btnstate3" onclick="ChangeGraph('3')">Pie</button>
+          <button class="graphchanger" id="btnstate1" onclick="ChangeGraph('1')">Mostly played tanks WN8</button>
+          <button class="graphchanger" id="btnstate2" onclick="ChangeGraph('2')">Mostly played tanks WN8 [%]</button>
+          <button class="graphchanger" id="btnstate3" onclick="ChangeGraph('3')">Mostly played tanks winrate</button>
+          <button class="graphchanger" id="btnstate4" onclick="ChangeGraph('4')">Mostly played tanks winrate [%]</button>
+          <button class="graphchanger" id="btnstate5" onclick="ChangeGraph('5')">Number of battles per tank type</button>
         </div>
 
         <div class="chartdiv" id="chart">

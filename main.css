@@ -199,3 +199,9 @@ div.piemoredata{
     text-anchor: middle;
     color:#aaaaaa;
 }
+
+#buttonholder{
+    
+  overflow: auto;
+  white-space: nowrap;
+}

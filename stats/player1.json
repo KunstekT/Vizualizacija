@@ -8,6 +8,7 @@
     "AvgXP": 335,
     "Battles": 744,
     "WinRate": "49.73",
+    "EUWinrate": "49.07",
     "WN8": "786",
     "EUWN8": "1206"
   },
@@ -20,6 +21,7 @@
     "AvgXP": 532,
     "Battles": 691,
     "WinRate": "48.19",
+    "EUWinrate": "47.39",
     "WN8": "1033",
     "EUWN8": "1241"
   },
@@ -32,6 +34,7 @@
     "AvgXP": 441,
     "Battles": 542,
     "WinRate": "46.13",
+    "EUWinrate": "46.15",
     "WN8": "933",
     "EUWN8": "988"
   },
@@ -44,6 +47,7 @@
     "AvgXP": 442,
     "Battles": 521,
     "WinRate": "47.98",
+    "EUWinrate": "48.41",
     "WN8": "1056",
     "EUWN8": "1261"
   },
@@ -56,6 +60,7 @@
     "AvgXP": 312,
     "Battles": 513,
     "WinRate": "50.49",
+    "EUWinrate": "48.48",
     "WN8": "827",
     "EUWN8": "1060"
   },
@@ -68,6 +73,7 @@
     "AvgXP": 495,
     "Battles": 371,
     "WinRate": "51.48",
+    "EUWinrate": "46.56",
     "WN8": "1020",
     "EUWN8": "895"
   },
@@ -80,6 +86,7 @@
     "AvgXP": 472,
     "Battles": 367,
     "WinRate": "50.41",
+    "EUWinrate": "47.68",
     "WN8": "1055",
     "EUWN8": "919"
   },
@@ -92,6 +99,7 @@
     "AvgXP": 439,
     "Battles": 353,
     "WinRate": "48.73",
+    "EUWinrate": "46.92",
     "WN8": "996",
     "EUWN8": "987"
   },
@@ -104,6 +112,7 @@
     "AvgXP": 373,
     "Battles": 297,
     "WinRate": "50.84",
+    "EUWinrate": "48.91",
     "WN8": "1115",
     "EUWN8": "1097"
   },
@@ -116,6 +125,7 @@
     "AvgXP": 478,
     "Battles": 275,
     "WinRate": "46.91",
+    "EUWinrate": "48.05",
     "WN8": "1032",
     "EUWN8": "1203"
   }]
