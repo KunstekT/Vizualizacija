@@ -1,19 +1,56 @@
+Top10TanksWinrateBidirectionalUtils = {
+    PrintTop10TanksWinrateToMetadataDiv:function(){
+    
+    d3.select("#moredata").selectAll("*").remove();
+    var x = d3.select("#moredata").append("div").attr("class", "piemoredata col-md-12");
+    
+    console.log(tankWinrate);
+    console.log(tankEuWinrate);
+    var PlayerTop10TanksPlayedWinrate = parseFloat(0);
+    var EUWTop10TanksPlayerPlayedWinrate = parseFloat(0);
+    for (let step = 0; step < tankCount; step++) {
+        PlayerTop10TanksPlayedWinrate = parseFloat(PlayerTop10TanksPlayedWinrate) + parseFloat(tankWinrate[step]);
+        EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate) + parseFloat(tankEuWinrate[step]);
+    }
+    PlayerTop10TanksPlayedWinrate = parseFloat(PlayerTop10TanksPlayedWinrate)/parseFloat(tankWinrate.length)
+    EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate)/parseFloat(tankEuWinrate.length)
+    
+    console.log(PlayerTop10TanksPlayedWinrate.toFixed(2));
+    console.log(EUWTop10TanksPlayerPlayedWinrate.toFixed(2));    
 
+    x.append("p").text("Total winrate of the mostly played 10 tanks played by: ");
+    x.append("p").text("Player: "+PlayerTop10TanksPlayedWinrate.toFixed(2)+"%");
+    x.append("p").text("EU: "+EUWTop10TanksPlayerPlayedWinrate.toFixed(2)+"%");
+    }
+}
 
 function DrawBidirectionalWinRateGraph(){
+    d3.select("#moredata").selectAll("*").remove();
+    Top10TanksWinrateBidirectionalUtils.PrintTop10TanksWinrateToMetadataDiv();
+    
     var margin = {top: 20, bottom: 70, left:40, right: 20};
     var width = 1000 - margin.left - margin.right;
     var height = 700- margin.top - margin.bottom;
     
     var barPadding = 10;
     var barWidth = width / tankWN8.length/2 - barPadding;
+
+    var maxPercent = 0;
+    console.log(tankWinrateDiff);
+    for (let step = 0; step < tankWinrateDiff.length; step++) {
+        if(parseFloat(maxPercent) < Math.abs(parseFloat(tankWinrateDiff[step]))){
+            maxPercent = parseFloat(tankWinrateDiff[step]);
+        }
+    }
+    console.log("Maxpercent: "+maxPercent);
+    maxPercent = parseFloat(maxPercent)+5;
     
     var x = d3.scaleBand()
     .domain(d3.range(tankWN8.length))
     .rangeRound([0, width]);
     
     var y = d3.scaleLinear()
-    .domain([-100, 100])// d3.max(tankWN8)
+    .domain([-maxPercent, maxPercent])// d3.max(tankWN8)
     .range([height, 0]);    
     
     var y2 = d3.scaleLinear()
@@ -79,21 +116,23 @@ function DrawBidirectionalWinRateGraph(){
         .enter()
         .append("rect")
         .attr("id", function(d,i) { return i;})
-        .attr("x", function(d, i) { return x(i)+28; })
+        .attr("x", function(d, i) {return x(i)+28;})
         .attr("y", y)
         .attr("height", function(d) { 
             if(d >= 0){
             return height/2 - y(d);  
             }else{
-            return height/2 - y(-d);
+            return height/2 - y((-d));
             }    
         })
         .attr("transform", function(d){
-        if(d >= 0){
-            return "translate(0, 0)";
-            }else{
-            return "translate(0, "+3*d+")";
-            }        
+            if(d >= 0){
+                return "translate(0, 0)";
+            }
+            else
+            {
+                return "translate(0, "+  (y(-d)-parseFloat(height/2)) +")";
+            }   
         })
         .attr("width", barWidth)
         .attr("fill", function(d){

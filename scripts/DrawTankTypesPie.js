@@ -1,5 +1,44 @@
+DrawTankTypesPieUtils = {
+    PrintTankTypeCountsToMetadataDiv: function(){   
+
+        d3.select("#moredata").selectAll("*").remove();
+        var x = d3.select("#moredata").append("div").attr("class", "piemoredata col-md-12");
+        var count=[0,0,0,0,0];
+        for (let step = 0; step < tankCount; step++) {
+            if(tankTypes[step]=="Light Tank"){
+                count[0]++;
+            }
+            if(tankTypes[step]=="Medium Tank"){
+                count[1]++;
+            }
+            if(tankTypes[step]=="Heavy Tank"){
+                count[2]++;
+            }
+            if(tankTypes[step]=="Tank Destroyer"){
+                count[3]++;
+            }
+            if(tankTypes[step]=="SPG"){
+                count[4]++;
+            }
+        }
+        
+        x.append("p").text("Light Tanks: "+count[0]);
+        x.append("p").text("Medium Tanks: "+count[1]);
+        x.append("p").text("Heavy Tanks: "+count[2]);
+        x.append("p").text("Tank Destroyers: "+count[3]);
+        x.append("p").text("SPGs: "+count[4]);
+
+    }
+}
+
+
+
 
 function DrawTankTypesPie(){
+    d3.select("#moredata").selectAll("*").remove();
+
+    DrawTankTypesPieUtils.PrintTankTypeCountsToMetadataDiv();
+    
     var data = [
         {name: 'LT', value: 0},
         {name: 'MT', value: 0},
@@ -7,17 +46,17 @@ function DrawTankTypesPie(){
         {name: 'TD', value: 0},
         {name: 'SPG', value: 0}
         ];
-
         
-    var element;
     for (let step = 0; step < tankCount; step++) {
-        if(tankTypes[step]=="Light Tank"){data[0].value=data[0].value+tankBattles[step];}
-        if(tankTypes[step]=="Medium Tank"){data[1].value=data[1].value+tankBattles[step];}
-        if(tankTypes[step]=="Heavy Tank"){data[2].value=data[2].value+tankBattles[step];}
+        if(tankTypes[step]=="Light Tank"    ){data[0].value=data[0].value+tankBattles[step];}
+        if(tankTypes[step]=="Medium Tank"   ){data[1].value=data[1].value+tankBattles[step];}
+        if(tankTypes[step]=="Heavy Tank"    ){data[2].value=data[2].value+tankBattles[step];}
         if(tankTypes[step]=="Tank Destroyer"){data[3].value=data[3].value+tankBattles[step];}
-        if(tankTypes[step]=="SPG"){data[4].value=data[4].value+tankBattles[step];}
+        if(tankTypes[step]=="SPG"           ){data[4].value=data[4].value+tankBattles[step];}
     }
     
+    
+    console.log("Before:");
     console.log(data);
 
 
@@ -97,12 +136,7 @@ function DrawTankTypesPie(){
             .duration('50')
             .attr('opacity','1');
         }).on('click',function(d, i){
-            d3.select("#moredata").selectAll("*").remove();
-            var x = d3.select("#moredata").append("div").attr("class", "piemoredata col-md-12");
-            for (let step = 0; step < tankCount; step++) {
-                // if(){
-                    x.append("p").text("abcabc");
-                // }
-            }
+
+
       }); 
 }

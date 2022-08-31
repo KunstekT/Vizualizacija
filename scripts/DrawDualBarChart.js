@@ -1,5 +1,15 @@
-
 function DrawDualBarChart(){
+    d3.select("#moredata").selectAll("*").remove();
+    var x = d3.select("#moredata").append("div").attr("class", "moredatadefaultmessage col-md-12");
+    x.append("p").text(defaultmessage1)
+    x.append("p").text(defaultmessage2)
+    x.append("p").text(defaultmessage3)
+    x.append("p").text(defaultmessage4)
+    x.append("p").text(defaultmessage5)
+    x.append("p").text(defaultmessage6)
+    x.append("p").text(defaultmessage7)
+    
+    
     var margin = {top: 20, bottom: 70, left:40, right: 20};
     var width = 1000 - margin.left - margin.right;
     var height = 700- margin.top - margin.bottom;
