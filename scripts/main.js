@@ -15,6 +15,7 @@ var defaultmessage7 = "w - win rate";
 
 
 TheObject = {
+
     LoadPlayerStats: function(pname){   
 
          this.LoadJsonStats(pname);
@@ -77,7 +78,6 @@ TheObject = {
             d3.select("#moredatatext").append("p").text(tankWN8[d3.select(this).attr("id")]);
             d3.select("#moredatatextmeaning").append("p").text("EU average WN8: ");
             d3.select("#moredatatext").append("p").text(tankEUWN8[d3.select(this).attr("id")]);
-
       }); 
     },
     DrawLegend: function(svg){
@@ -102,44 +102,25 @@ TheObject = {
       if(state==4){
         // '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'4
 
-
         svg.append("rect").attr("width","20").attr("height","20").attr("x","840").attr("y","0").attr("style","fill:#855238;");
         svg.append("text").attr("x","860").attr("y","0").attr("dy", "1em").style("text-anchor", "start").text("Below average winrate");
         svg.append("rect").attr("width","20").attr("height","20").attr("x","840").attr("y","20").attr("style","fill:#3a8a50;");
         svg.append("text").attr("x","860").attr("y","20").attr("dy", "1em").style("text-anchor", "start").text("Above average winrate");
 
       } 
-
-      // unused dead code holder
-      if(state==123){        
-        // svg.append("rect").attr("width","20").attr("height","20").attr("x","780").attr("y","0").attr("style","fill:#1f77b4;");
-        // svg.append("text").attr("x","800").attr("y","0").attr("dy", "1em").style("text-anchor", "start").text("Light tanks");
-        
-        // svg.append("rect").attr("width","20").attr("height","20").attr("x","780").attr("y","20").attr("style","fill:#ff7f0e;");
-        // svg.append("text").attr("x","800").attr("y","20").attr("dy", "1em").style("text-anchor", "start").text("Medium tanks ");
-        
-        // svg.append("rect").attr("width","20").attr("height","20").attr("x","780").attr("y","40").attr("style","fill:#2ca02c;");
-        // svg.append("text").attr("x","800").attr("y","40").attr("dy", "1em").style("text-anchor", "start").text("Heavy tanks");
-        
-        // svg.append("rect").attr("width","20").attr("height","20").attr("x","780").attr("y","60").attr("style","fill:#d62728;");
-        // svg.append("text").attr("x","800").attr("y","60").attr("dy", "1em").style("text-anchor", "start").text("Tank Destroyers");
-        
-        // svg.append("rect").attr("width","20").attr("height","20").attr("x","780").attr("y","80").attr("style","fill:#9467bd;");
-        // svg.append("text").attr("x","800").attr("y","80").attr("dy", "1em").style("text-anchor", "start").text("SPGs");
-      }
     },
     showTooltip: function(evt, text) {
-    let tooltip = document.getElementById("tooltip");
-    tooltip.innerHTML = text;
-    tooltip.style.display = "block";
-    tooltip.style.left = evt.pageX + 10 + 'px';
-    tooltip.style.top = evt.pageY + 10 + 'px';
-  },
+      let tooltip = document.getElementById("tooltip");
+      tooltip.innerHTML = text;
+      tooltip.style.display = "block";
+      tooltip.style.left = evt.pageX + 10 + 'px';
+      tooltip.style.top = evt.pageY + 10 + 'px';
+    },
 
-   hideTooltip:function() {
-    var tooltip = document.getElementById("tooltip");
-    tooltip.style.display = "none";
-  },
+    hideTooltip:function() {
+      var tooltip = document.getElementById("tooltip");
+      tooltip.style.display = "none";
+    },
 
   ChangeNumbersToPercentage:function(value, index, array) {
     if(value<1){
@@ -167,7 +148,6 @@ TheObject = {
    })
    .then(json => {
        jsonStats = json;
-       console.log(jsonStats);
 
         tankCount = jsonStats.length;
 
@@ -213,7 +193,6 @@ TheObject = {
 
         tankWinrateDiff.forEach(TheObject.ChangeNumbersToPercentage);
 
-        console.log(tankTypes);
         ChangeGraph(1);
     
     })

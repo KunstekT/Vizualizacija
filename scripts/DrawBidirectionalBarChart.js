@@ -12,8 +12,7 @@ function DrawBidirectionalBarChart(){
     
     var margin = {top: 20, bottom: 70, left:40, right: 20};
     var width = 1000 - margin.left - margin.right;
-    var height = 700- margin.top - margin.bottom;
-    
+    var height = 700- margin.top - margin.bottom;    
     var barPadding = 10;
     var barWidth = width / tankWN8.length/2 - barPadding;
     

@@ -54,11 +54,6 @@ function DrawTankTypesPie(){
         if(tankTypes[step]=="Tank Destroyer"){data[3].value=data[3].value+tankBattles[step];}
         if(tankTypes[step]=="SPG"           ){data[4].value=data[4].value+tankBattles[step];}
     }
-    
-    
-    console.log("Before:");
-    console.log(data);
-
 
     var pie = d3.pie()
     .value(function(d) { return d.value; });

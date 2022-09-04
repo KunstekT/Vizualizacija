@@ -106,7 +106,6 @@ function DrawWinratePerTankTypeChart(){
         }
     });    
     maxWinrate=parseFloat(maxWinrate)+parseFloat(5)
-    console.log("Max "+ maxWinrate);
     
     var minWinrate = parseFloat(100);
     data.forEach(element => {
@@ -115,7 +114,6 @@ function DrawWinratePerTankTypeChart(){
         }
     });        
     minWinrate=parseFloat(minWinrate)-parseFloat(5)
-    console.log("Min "+ minWinrate);
 
     var y = d3.scaleLinear()
     .domain([parseInt(minWinrate), parseInt(maxWinrate)])

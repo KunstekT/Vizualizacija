@@ -12,8 +12,7 @@ function DrawDualBarChart(){
     
     var margin = {top: 20, bottom: 70, left:40, right: 20};
     var width = 1000 - margin.left - margin.right;
-    var height = 700- margin.top - margin.bottom;
-    
+    var height = 700- margin.top - margin.bottom;    
     var barPadding = 10;
     var barWidth = width / tankWN8.length/2 - barPadding;
     
@@ -21,11 +20,10 @@ function DrawDualBarChart(){
     .domain(d3.range(tankWN8.length))
     .rangeRound([0, width]);
     
-    var maxvalue = 0;
-    maxvalue = parseInt(maxvalue);
-    
+     
     var maxWN8 = 0;
     var maxEUWN8 = 0;
+
     tankWN8.forEach(element => {
         element = parseInt(element);
         if(element > maxWN8){
@@ -37,10 +35,9 @@ function DrawDualBarChart(){
         if(element > maxEUWN8){
             maxEUWN8 = element;
         }
-    });
-    console.log(maxWN8);
-    console.log(maxEUWN8);
-    
+    });    
+
+    var maxvalue = 0;  
     if(maxWN8 < maxEUWN8){
         maxvalue = maxEUWN8;
     }else{

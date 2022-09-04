@@ -3,9 +3,7 @@ Top10TanksWinrateUtils = {
     
     d3.select("#moredata").selectAll("*").remove();
     var x = d3.select("#moredata").append("div").attr("class", "piemoredata col-md-12");
-    
-    console.log(tankWinrate);
-    console.log(tankEuWinrate);
+
     var PlayerTop10TanksPlayedWinrate = parseFloat(0);
     var EUWTop10TanksPlayerPlayedWinrate = parseFloat(0);
     for (let step = 0; step < tankCount; step++) {
@@ -13,10 +11,7 @@ Top10TanksWinrateUtils = {
         EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate) + parseFloat(tankEuWinrate[step]);
     }
     PlayerTop10TanksPlayedWinrate = parseFloat(PlayerTop10TanksPlayedWinrate)/parseFloat(tankWinrate.length)
-    EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate)/parseFloat(tankEuWinrate.length)
-    
-    console.log(PlayerTop10TanksPlayedWinrate.toFixed(2));
-    console.log(EUWTop10TanksPlayerPlayedWinrate.toFixed(2));    
+    EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate)/parseFloat(tankEuWinrate.length) 
 
     x.append("p").text("Total winrate of the mostly played 10 tanks played by: ");
     x.append("p").text("Player: "+PlayerTop10TanksPlayedWinrate.toFixed(2)+"%");
@@ -26,12 +21,10 @@ Top10TanksWinrateUtils = {
     GetMaxWR:function(){
         var maxWinrate = parseFloat(0);
         tankWinrate.forEach(element => {
-            console.log(parseFloat(element)+", "+parseFloat(maxWinrate))
             if(parseFloat(element) > parseFloat(maxWinrate)){
                 maxWinrate = parseFloat(element);
             }
         });    
-        console.log("Max "+ parseFloat(maxWinrate).toFixed(2));
         
         var maxEUWinrate = parseFloat(0);
         tankEuWinrate.forEach(element => {
@@ -39,9 +32,6 @@ Top10TanksWinrateUtils = {
                 maxEUWinrate = parseFloat(element);
             }
         });    
-        console.log("MaxEU "+ parseFloat(maxEUWinrate).toFixed(2));
-        
-        
     
         if(maxWinrate < maxEUWinrate){
             maxWinrate = maxEUWinrate;
@@ -57,7 +47,6 @@ Top10TanksWinrateUtils = {
                 minWinrate = parseFloat(element);
             }
         });        
-        console.log("Min "+ parseFloat(minWinrate).toFixed(2));
         
         var minEUWinrate = parseFloat(100);
         tankEuWinrate.forEach(element => {
@@ -65,7 +54,6 @@ Top10TanksWinrateUtils = {
                 minEUWinrate = parseFloat(element);
             }
         });        
-        console.log("MinEU "+ parseFloat(minEUWinrate).toFixed(2));
 
         if( minWinrate > minEUWinrate){
             minWinrate = minEUWinrate;
@@ -94,9 +82,6 @@ function DrawWinRateGraph(){
     if(parseFloat(minWR)<0)minWR = 0;
     var maxWR = Top10TanksWinrateUtils.GetMaxWR() + parseFloat(5);
     if(parseFloat(maxWR)>100)maxWR = 100;
-        
-    
-    console.log("MinWR "+ parseFloat(minWR).toFixed(2)+", MAXWR "+ parseFloat(maxWR).toFixed(2));
 
     var y = d3.scaleLinear()
     .domain([minWR, maxWR])

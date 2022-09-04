@@ -4,8 +4,6 @@ Top10TanksWinrateBidirectionalUtils = {
     d3.select("#moredata").selectAll("*").remove();
     var x = d3.select("#moredata").append("div").attr("class", "piemoredata col-md-12");
     
-    console.log(tankWinrate);
-    console.log(tankEuWinrate);
     var PlayerTop10TanksPlayedWinrate = parseFloat(0);
     var EUWTop10TanksPlayerPlayedWinrate = parseFloat(0);
     for (let step = 0; step < tankCount; step++) {
@@ -13,10 +11,7 @@ Top10TanksWinrateBidirectionalUtils = {
         EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate) + parseFloat(tankEuWinrate[step]);
     }
     PlayerTop10TanksPlayedWinrate = parseFloat(PlayerTop10TanksPlayedWinrate)/parseFloat(tankWinrate.length)
-    EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate)/parseFloat(tankEuWinrate.length)
-    
-    console.log(PlayerTop10TanksPlayedWinrate.toFixed(2));
-    console.log(EUWTop10TanksPlayerPlayedWinrate.toFixed(2));    
+    EUWTop10TanksPlayerPlayedWinrate = parseFloat(EUWTop10TanksPlayerPlayedWinrate)/parseFloat(tankEuWinrate.length)  
 
     x.append("p").text("Total winrate of the mostly played 10 tanks played by: ");
     x.append("p").text("Player: "+PlayerTop10TanksPlayedWinrate.toFixed(2)+"%");
@@ -36,13 +31,11 @@ function DrawBidirectionalWinRateGraph(){
     var barWidth = width / tankWN8.length/2 - barPadding;
 
     var maxPercent = 0;
-    console.log(tankWinrateDiff);
     for (let step = 0; step < tankWinrateDiff.length; step++) {
         if(parseFloat(maxPercent) < Math.abs(parseFloat(tankWinrateDiff[step]))){
             maxPercent = parseFloat(tankWinrateDiff[step]);
         }
     }
-    console.log("Maxpercent: "+maxPercent);
     maxPercent = parseFloat(maxPercent)+5;
     
     var x = d3.scaleBand()
